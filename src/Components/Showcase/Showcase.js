@@ -25,7 +25,9 @@ const Showcase = () => {
                                         <Card.Img className="showcase-card-img" variant="top" src={item.image} />
                                         <Card.Body className="showcase-card-body">
                                             <p className="card-title">{item.title}</p>
-                                            <Card.Text>{item.description}</Card.Text>
+                                            <Card.Text className="showcase-card-text" variant="">
+                                                {item.description}
+                                            </Card.Text>
                                         </Card.Body>
                                     </Card>
                                 </Col>

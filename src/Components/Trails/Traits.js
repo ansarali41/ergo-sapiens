@@ -6,6 +6,23 @@ import './Traits.css';
 
 const Traits = () => {
     const [data, setData] = useState(TraitsData);
+
+    // gif hover effect
+    const [isHover1, setIsHover1] = useState(false);
+    const [isHover2, setIsHover2] = useState(false);
+    const [isHover3, setIsHover3] = useState(false);
+
+    const onMouseEnter = id => {
+        if (id === 1) setIsHover1(true);
+        else if (id === 2) setIsHover2(true);
+        else if (id === 3) setIsHover3(true);
+    };
+
+    const onMouseLeave = id => {
+        if (id === 1) setIsHover1(false);
+        else if (id === 2) setIsHover2(false);
+        else if (id === 3) setIsHover3(false);
+    };
     return (
         <div className="main-container Traits-container fade-in-fwd" id="traits">
             {/* Traits header */}
@@ -24,17 +41,59 @@ const Traits = () => {
                 <Container fluid>
                     <CardGroup>
                         <Row className="d-flex justify-content-evenly">
-                            {data.map(item => (
-                                <Col key={item.id} sm={10} md={3} lg={3}>
-                                    <Card className="bg-transparent">
-                                        <Card.Img className="Traits-card-img" variant="top" src={item.image} />
-                                        <Card.Body className="Traits-card-body">
-                                            <p className="card-title">{item.title}</p>
-                                            <Card.Text>{item.description}</Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ))}
+                            {/* 1st card */}
+                            <Col sm={10} md={3} lg={3}>
+                                <Card className="bg-transparent">
+                                    <Card.Img
+                                        className="Traits-card-img"
+                                        variant="top"
+                                        src={isHover1 ? data[0].gif : data[0].image}
+                                        onMouseEnter={() => onMouseEnter(1)}
+                                        onMouseLeave={() => onMouseLeave(1)}
+                                    />
+
+                                    <Card.Body className="Traits-card-body">
+                                        <p className="card-title">{data[0].title}</p>
+                                        <Card.Text className="traits-card-text">{data[0].description}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+
+                            {/* 2nd card */}
+                            <Col sm={10} md={3} lg={3}>
+                                <Card className="bg-transparent">
+                                    <Card.Img
+                                        className="Traits-card-img"
+                                        variant="top"
+                                        src={isHover2 ? data[1].gif : data[1].image}
+                                        onMouseEnter={() => onMouseEnter(2)}
+                                        onMouseLeave={() => onMouseLeave(2)}
+                                    />
+
+                                    <Card.Body className="Traits-card-body">
+                                        <p className="card-title">{data[1].title}</p>
+                                        <Card.Text className="traits-card-text">{data[1].description}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+
+                            {/* 3rd card */}
+                            <Col sm={10} md={3} lg={3}>
+                                <Card className="bg-transparent">
+                                    <Card.Img
+                                        className="Traits-card-img"
+                                        variant="top"
+                                        src={isHover3 ? data[2].gif : data[2].image}
+                                        onMouseEnter={() => onMouseEnter(3)}
+                                        onMouseLeave={() => onMouseLeave(3)}
+                                    />
+
+                                    <Card.Body className="Traits-card-body">
+                                        <p className="card-title">{data[2].title}</p>
+                                        <Card.Text className="traits-card-text">{data[2].description}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
                         </Row>
                     </CardGroup>
                 </Container>
